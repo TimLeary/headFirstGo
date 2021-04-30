@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"headFirstGo/keyboard"
+	"github.com/TimLeary/headFirstGo/keyboard"
 	"log"
 )
 
