@@ -11,5 +11,16 @@ func main()  {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println(lines)
+
+	votes := make(map[string]int)
+	for _, line := range lines {
+		votes[line] += 1
+	}
+
+	fmt.Println(votes)
+
+	for candidate, vote := range votes {
+		fmt.Println("Candidate:", candidate, "votes:", vote)
+	}
+
 }
