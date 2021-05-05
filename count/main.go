@@ -14,7 +14,7 @@ func main()  {
 
 	votes := make(map[string]int)
 	for _, line := range lines {
-		votes[line] += 1
+		votes[line]++
 	}
 
 	fmt.Println(votes)
