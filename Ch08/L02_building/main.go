@@ -23,4 +23,10 @@ func main()  {
 
 	subscriber.Address = address
 	fmt.Println(subscriber.Address)
+
+	employee.Street = "456 Elm St"
+	employee.City = "Portland"
+	employee.State = "OR"
+	employee.PostalCode = "97222"
+	fmt.Println(employee.Address)
 }
