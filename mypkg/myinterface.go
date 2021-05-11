@@ -10,18 +10,18 @@ type MyInterface interface {
 
 type MyType int
 
-func (m *MyType) MethodWithoutParameters() {
+func (m MyType) MethodWithoutParameters() {
 	fmt.Println("MethodWithoutParameters called")
 }
 
-func (m *MyType) MethodWithParameter(f float64) {
+func (m MyType) MethodWithParameter(f float64) {
 	fmt.Println("MethodWithParameter called with", f)
 }
 
-func (m *MyType) MethodWithReturnValue() string {
+func (m MyType) MethodWithReturnValue() string {
 	return "Hi from MethodWithReturnValue"
 }
 
-func (my *MyType) MethodNotInInterface() {
+func (my MyType) MethodNotInInterface() {
 	fmt.Println("MethodNotInInterface called")
 }
