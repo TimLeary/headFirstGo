@@ -3,20 +3,32 @@ package datafile
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 	"strconv"
 )
+
+func OpenFile(fileName string) (*os.File, error) {
+	fmt.Println("Opening", fileName)
+	return os.Open(fileName)
+}
+
+func CloseFile(file *os.File) {
+	fmt.Println("Closing file")
+	file.Close()
+}
 
 //GetFloats reads a float64 from each line of a file
 func GetFloats(fileName string) ([]float64, error) {
 	var numbers []float64
 	var act float64
 
-	file, err := os.Open(fileName)
+	file, err := OpenFile(fileName)
 	if err != nil {
 		return nil, err
 	}
 
+	defer CloseFile(file)
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		act, err = strconv.ParseFloat(scanner.Text(), 64)
@@ -24,11 +36,6 @@ func GetFloats(fileName string) ([]float64, error) {
 			return numbers, err
 		}
 		numbers = append(numbers, act)
-	}
-
-	err = file.Close()
-	if err != nil {
-		return nil, err
 	}
 
 	if scanner.Err() != nil {
